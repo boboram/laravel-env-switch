@@ -1,10 +1,15 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
+정    <!--플러그인의 고유 식별자-->
     <id>com.github.boboram.laravelenvswitch</id>
+    <!--플러그인명-->
     <name>laravel-env-switch</name>
     <vendor>boboram</vendor>
 
+<!--    <depends>com.jetbrains.php</depends>-->
+    <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
+
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.boboram.laravelenvswitch.services.MyApplicationService"/>
