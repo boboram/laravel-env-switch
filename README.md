@@ -13,8 +13,8 @@
 - .env.pre : Environment files for pre(test,development)
 - .env.live : Environment files for live
 
-### screenshot
-![img.png](img.png)
+### Screenshot
+![Screenshot](https://raw.githubusercontent.com/boboram/laravel-env-switch/main/img.png)
 
 <!-- Plugin description end -->
 
