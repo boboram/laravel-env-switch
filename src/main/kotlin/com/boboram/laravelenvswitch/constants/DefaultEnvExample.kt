@@ -1,4 +1,4 @@
-package com.github.boboram.laravelenvswitch.constants
+package com.boboram.laravelenvswitch.constants
 
 /**
  * framework example env file

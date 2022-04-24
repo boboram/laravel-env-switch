@@ -1,6 +1,6 @@
-package com.github.boboram.laravelenvswitch.constants
+package com.boboram.laravelenvswitch.constants
 
-import com.github.boboram.laravelenvswitch.actions.EnvSwitchAction
+import com.boboram.laravelenvswitch.actions.EnvSwitchAction
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon

@@ -1,6 +1,6 @@
-package com.github.boboram.laravelenvswitch.services
+package com.boboram.laravelenvswitch.services
 
-import com.github.boboram.laravelenvswitch.constants.DefaultEnvExample
+import com.boboram.laravelenvswitch.constants.DefaultEnvExample
 import com.intellij.openapi.project.Project
 import java.io.File
 

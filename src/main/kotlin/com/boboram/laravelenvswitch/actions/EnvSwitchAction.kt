@@ -1,9 +1,9 @@
-package com.github.boboram.laravelenvswitch.actions
+package com.boboram.laravelenvswitch.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
-import com.github.boboram.laravelenvswitch.services.switchEnvFile
+import com.boboram.laravelenvswitch.services.switchEnvFile
 import javax.swing.Icon
 
 /**

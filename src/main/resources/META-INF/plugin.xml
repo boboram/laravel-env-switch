@@ -1,10 +1,10 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!--플러그인의 고유 식별자-->
-    <id>com.github.boboram.laravelenvswitch</id>
+    <id>com.boboram.laravelenvswitch</id>
     <!--플러그인명-->
     <name>laravel-env-switch</name>
-    <vendor>boboram</vendor>
+    <vendor url="https://github.com/boboram/laravel-env-switch">boboram</vendor>
 
     <!--종속관계-->
     <depends>com.jetbrains.php</depends>
@@ -13,8 +13,8 @@
     <actions>
         <!--도구메뉴에 추가된 그룹액션-->
         <group
-                id="EnvSwitchMenu"
-                class="com.github.boboram.laravelenvswitch.actions.EnvSwitchMenuAction"
+                id="EnvSwitchMenuAction"
+                class="com.boboram.laravelenvswitch.actions.EnvSwitchMenuAction"
                 popup="true"
                 text="Laravel Env Switch"
                 description="Laravel Env Switch">

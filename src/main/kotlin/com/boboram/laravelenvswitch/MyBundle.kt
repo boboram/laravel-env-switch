@@ -1,4 +1,4 @@
-package com.github.boboram.laravelenvswitch
+package com.boboram.laravelenvswitch
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

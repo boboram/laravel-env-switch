@@ -1,6 +1,6 @@
-package com.github.boboram.laravelenvswitch.actions
+package com.boboram.laravelenvswitch.actions
 
-import com.github.boboram.laravelenvswitch.constants.EnvType
+import com.boboram.laravelenvswitch.constants.EnvType
 import com.intellij.openapi.actionSystem.ActionGroup
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
