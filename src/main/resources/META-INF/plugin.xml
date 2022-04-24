@@ -10,18 +10,7 @@
     <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.boboram.laravelenvswitch.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.boboram.laravelenvswitch.services.MyProjectService"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.boboram.laravelenvswitch.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
-
     <actions>
-
         <!--도구메뉴에 추가된 그룹액션-->
         <group
                 id="EnvSwitchMenu"

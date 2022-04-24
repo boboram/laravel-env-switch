@@ -1,31 +1,21 @@
 package com.github.boboram.laravelenvswitch.actions
 
+import com.github.boboram.laravelenvswitch.constants.EnvType
 import com.intellij.openapi.actionSystem.ActionGroup
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import icons.Icons
 
 /**
  * internal class EnvSwitchMenuAction
+ * tool > 처음나오게 되는 laravel-env-switch 메뉴의 하위메뉴 정의
+ * laravel-env-switch 메뉴는 plugin.xml 에서 명시
  */
 internal class EnvSwitchMenuAction : ActionGroup() {
     override fun getChildren(event: AnActionEvent?): Array<AnAction> {
         return arrayOf(
-            PopupDialogAction(
-                "Local Env",
-                "Local Env Switch",
-                Icons.LOCAL.getIcon()
-            ),
-            PopupDialogAction(
-                "Pre Env",
-                "Pre Env Switch",
-                Icons.PRE.getIcon()
-            ),
-            PopupDialogAction(
-                "Live Env",
-                "Live Env Switch",
-                Icons.LIVE.getIcon()
-            )
+            EnvType.Local.getAction(),
+            EnvType.Pre.getAction(),
+            EnvType.Live.getAction()
         )
     }
 }

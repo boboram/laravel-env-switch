@@ -2,8 +2,8 @@ package com.github.boboram.laravelenvswitch.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.ui.Messages
+import com.github.boboram.laravelenvswitch.services.switchEnvFile
 import javax.swing.Icon
 
 /**
@@ -11,13 +11,14 @@ import javax.swing.Icon
  * The only action this class performs is to provide the user with a popup dialog as feedback.
  * Typically this class is instantiated by the IntelliJ Platform framework based on declarations
  * in the plugin.xml file. But when added at runtime this class is instantiated by an action group.
- * https://github.com/JetBrains/intellij-sdk-code-samples 자바로 돼있는 코드 코틀린으로 변환만 하였음
+ * https://github.com/JetBrains/intellij-sdk-code-samples 자바로 돼있는 코드 참고하여 코틀린으로 변환후 플러그인에 필요한 메서드 구현함
  * 툴바 혹은 액션 클릭시 나오는 행위 구현
+ * 해당 프로젝트에서는 메뉴 클릭시 환경파일 스위칭 되는 것을 구현
  */
-class PopupDialogAction : AnAction {
+class EnvSwitchAction : AnAction {
     /**
      * This default constructor is used by the IntelliJ Platform framework to instantiate this class based on plugin.xml
-     * declarations. Only needed in [PopupDialogAction] class because a second constructor is overridden.
+     * declarations. Only needed in [EnvSwitchAction] class because a second constructor is overridden.
      *
      * @see AnAction.AnAction
      */
@@ -28,9 +29,9 @@ class PopupDialogAction : AnAction {
      * 메뉴 항목에 대해 표시할 텍스트와 설명
      * 동적이 아닌경우 기본 AnAction 생성자 사용
      *
-     * @param text        메뉴에 표시되는 이름
+     * @param text        env type(환경 타입) local, pre, live
      * @param description 메뉴 설명
-     * @param icon        메뉴 아이콘
+     * @param icon        menu icon(메뉴 아이콘)
      */
     constructor(text: String?, description: String?, icon: Icon?) : super(text, description, icon) {}
 
@@ -41,17 +42,41 @@ class PopupDialogAction : AnAction {
      * Local | Pre | Live 중 한개 누른 경우
      */
     override fun actionPerformed(event: AnActionEvent) {
-        // 이벤트를 사용하여 대화 상자 만들기 및 표시
+        // project 는 플러그인을 사용중인 작업자의 프로젝트를 의미한다.
         val currentProject = event.project
-        val dlgMsg = StringBuilder(event.presentation.text + " Switching Success!")
-        val dlgTitle = event.presentation.description
-        // 편집기에서 요소를 선택한 경우 해당 요소에 대한 정보를 추가
-        /*val nav = event.getData(CommonDataKeys.NAVIGATABLE)
-        if (nav != null) {
-            dlgMsg.append(String.format("\nSelected Element: %s", nav.toString()))
-        }*/
-        //기본 제공 api
-        Messages.showMessageDialog(currentProject, dlgMsg.toString(), dlgTitle, Messages.getInformationIcon())
+        val type = event.presentation.text.lowercase()
+        val dlgMsg = StringBuilder("Successful ${type} environment modification!")
+
+        /**
+         * 환경 파일이 있는 경우에만 copy file
+         */
+        if (switchEnvFile(currentProject, type)) {
+            Messages.showMessageDialog(
+                currentProject,
+                dlgMsg.toString(),
+                event.presentation.description,
+                Messages.getInformationIcon()
+            )
+        } else {
+            /**
+             * 파일이 존재하지 않아 생성하였습니다!
+             * 추천
+             * 1. 작업환경에 맞춰서 수정하기
+             * 2. .gitignore 파일에 새로운 파일을 명시하기
+             */
+            Messages.showMessageDialog(
+                currentProject,
+                """File created because it does not exist!
+                    
+                   Recommendation
+                   1. Modify according to the working environment
+                   2. Specify new files in the .gitignore file
+                   """.trimIndent(),
+                ".env.${type} file created!",
+                Messages.getInformationIcon()
+            )
+        }
+
     }
 
     /**
