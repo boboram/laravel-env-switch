@@ -20,9 +20,8 @@ class EnvSwitchAction : AnAction {
      * This default constructor is used by the IntelliJ Platform framework to instantiate this class based on plugin.xml
      * declarations. Only needed in [EnvSwitchAction] class because a second constructor is overridden.
      *
-     * @see AnAction.AnAction
      */
-    constructor() : super() {}
+    constructor() : super()
 
     /**
      * 이 생성자는 동적으로 추가된 메뉴 작업을 지원하는 데 사용
@@ -33,7 +32,7 @@ class EnvSwitchAction : AnAction {
      * @param description 메뉴 설명
      * @param icon        menu icon(메뉴 아이콘)
      */
-    constructor(text: String?, description: String?, icon: Icon?) : super(text, description, icon) {}
+    constructor(text: String?, description: String?, icon: Icon?) : super(text, description, icon)
 
     /**
      * (동적 작업 메뉴를 선택시 알림창 띄우기)
@@ -45,7 +44,7 @@ class EnvSwitchAction : AnAction {
         // project 는 플러그인을 사용중인 작업자의 프로젝트를 의미한다.
         val currentProject = event.project
         val type = event.presentation.text.lowercase()
-        val dlgMsg = StringBuilder("Successful ${type} environment modification!")
+        val dlgMsg = StringBuilder("Successful $type environment modification!")
 
         /**
          * 환경 파일이 있는 경우에만 copy file

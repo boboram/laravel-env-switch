@@ -8,20 +8,20 @@ import javax.swing.Icon
 /**
  * env type
  */
-enum class EnvType() {
+enum class EnvType {
     Local, Pre, Live;
 
     /**
      * env description
      */
-    fun getDescription():String {
-        return "${name} Env Switch"
+    private fun getDescription():String {
+        return "${this.name} Env Switch"
     }
 
     /**
      * get menu icon by env
      */
-    fun getIcon() : Icon {
+    private fun getIcon() : Icon {
         return IconLoader.getIcon(
             "/icons/${name.lowercase()}Icon.svg",
             EnvType::class.java
@@ -34,8 +34,8 @@ enum class EnvType() {
     fun getAction() : AnAction {
         return EnvSwitchAction(
             name,
-            getDescription(),
-            getIcon()
+            this.getDescription(),
+            this.getIcon()
         )
     }
 }
