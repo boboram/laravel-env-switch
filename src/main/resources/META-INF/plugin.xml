@@ -11,13 +11,26 @@
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
-        <!--도구메뉴에 추가된 그룹액션-->
+        <!--도구메뉴에 추가된 그룹액션
+            id : 해당 액션의 고유 아이디
+            class : 해당 액션이 구현되는 액션 클래스 경로
+            popup : "선택사항" - 그룹이 메뉴에 표시되는 방법을 지정
+                * true - 그룹 작업이 하위 메뉴에 배치됩니다.
+                * false - 작업은 동일한 메뉴의 섹션으로 표시됩니다.
+            구분 기호로 구분됩니다.
+            text : 추가된 메뉴 명
+            description : 그룹메뉴 설명
+        -->
         <group
                 id="EnvSwitchMenuAction"
                 class="com.boboram.laravelenvswitch.actions.EnvSwitchMenuAction"
                 popup="true"
                 text="Laravel Env Switch"
                 description="Laravel Env Switch">
+            <!--어디 그룹에 추가할것인가
+                group-id : 툴바에 추가한다.
+                anchor : 위치 first명 가장 위에 표시됨
+            -->
             <add-to-group group-id="ToolsMenu"
                           anchor="first"/>
         </group>
