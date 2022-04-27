@@ -1,9 +1,10 @@
 package com.boboram.laravelenvswitch.actions
 
+import com.boboram.laravelenvswitch.constants.SwitchType
+import com.boboram.laravelenvswitch.services.switchEnvFile
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
-import com.boboram.laravelenvswitch.services.switchEnvFile
 import javax.swing.Icon
 
 /**
@@ -43,13 +44,14 @@ class EnvSwitchAction : AnAction {
     override fun actionPerformed(event: AnActionEvent) {
         // project 는 플러그인을 사용중인 작업자의 프로젝트를 의미한다.
         val currentProject = event.project
-        val type = event.presentation.text.lowercase()
+        var type = event.presentation.text.lowercase()
         val dlgMsg = StringBuilder("Successful $type environment modification!")
 
+        val switchType = switchEnvFile(currentProject, type)
         /**
          * 환경 파일이 있는 경우에만 copy file
          */
-        if (switchEnvFile(currentProject, type)) {
+        if (switchType === SwitchType.Success) {
             Messages.showMessageDialog(
                 currentProject,
                 dlgMsg.toString(),
@@ -71,11 +73,10 @@ class EnvSwitchAction : AnAction {
                    1. Modify according to the working environment
                    2. Specify new files in the .gitignore file
                    """.trimIndent(),
-                ".env.${type} file created!",
+                "${switchType.getChangedFile(type)} file created!",
                 Messages.getInformationIcon()
             )
         }
-
     }
 
     /**
