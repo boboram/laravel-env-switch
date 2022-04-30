@@ -13,8 +13,18 @@
 - .env.pre : Environment files for pre(test,development)
 - .env.live : Environment files for live
 
-### Screenshot
-![Screenshot](https://raw.githubusercontent.com/boboram/laravel-env-switch/main/img.png)
+### Description
+1. PHPStorm > Tools > Laravel Env Switch > env click!
+
+2. Please select the desired work environment!
+
+3. If you have a .env.{#type} file, The contents of the .env file will be changed to .env.{#type} (#type : This is the environment you chose.)
+
+4. If you don't have a .env file or .env.{#type} file, It does not switch and creates a .env file or .env.#{type} file.
+
+5. Available for any project that uses the .env file as an environment file
+
+See the [laravel-env-switch](https://plugins.jetbrains.com/plugin/19019-laravel-env-switch) for more information!
 
 <!-- Plugin description end -->
 

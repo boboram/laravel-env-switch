@@ -1,5 +1,6 @@
 package com.boboram.laravelenvswitch.actions
 
+import com.boboram.laravelenvswitch.constants.EnvType
 import com.boboram.laravelenvswitch.constants.SwitchType
 import com.boboram.laravelenvswitch.services.switchEnvFile
 import com.intellij.openapi.actionSystem.AnAction
@@ -17,12 +18,6 @@ import javax.swing.Icon
  * 해당 프로젝트에서는 메뉴 클릭시 환경파일 스위칭 되는 것을 구현
  */
 class EnvSwitchAction : AnAction {
-    /**
-     * This default constructor is used by the IntelliJ Platform framework to instantiate this class based on plugin.xml
-     * declarations. Only needed in [EnvSwitchAction] class because a second constructor is overridden.
-     *
-     */
-    constructor() : super()
 
     /**
      * 이 생성자는 동적으로 추가된 메뉴 작업을 지원하는 데 사용
@@ -34,6 +29,17 @@ class EnvSwitchAction : AnAction {
      * @param icon        menu icon(메뉴 아이콘)
      */
     constructor(text: String?, description: String?, icon: Icon?) : super(text, description, icon)
+
+    companion object {
+        /**
+         * env_type 을 보내면 해당 내용값으로 메뉴를 생성한다.(팩토리메서드)
+         * 이 생성자는 동적으로 추가된 메뉴 작업을 지원하는 데 사용
+         * 메뉴 항목에 대해 표시할 텍스트와 설명
+         * 동적이 아닌경우 기본 AnAction 생성자 사용
+         * @param envType
+         */
+        fun makeSwitchMenu(envType: EnvType) = EnvSwitchAction(envType.name, envType.getDescription(), envType.getIcon())
+    }
 
     /**
      * (동적 작업 메뉴를 선택시 알림창 띄우기)

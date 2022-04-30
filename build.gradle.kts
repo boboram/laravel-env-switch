@@ -24,6 +24,13 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("org.codehaus.groovy:groovy-all:2.3.11")
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.jetbrains.kotlin", "kotlin-test-junit5", "1.3.72")
+}
+
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     //플러그인명칭
@@ -93,6 +100,9 @@ tasks {
         })
     }
 
+    test{
+        useJUnitPlatform()
+    }
     // Configure UI tests plugin
     // Read more: https://github.com/JetBrains/intellij-ui-test-robot
     runIdeForUiTests {
