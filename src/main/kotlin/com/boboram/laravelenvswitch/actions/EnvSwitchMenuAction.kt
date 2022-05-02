@@ -13,9 +13,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 internal class EnvSwitchMenuAction : ActionGroup() {
     override fun getChildren(event: AnActionEvent?): Array<AnAction> {
         return arrayOf(
-            EnvSwitchAction.Companion.makeSwitchMenu(EnvType.Local),
-            EnvSwitchAction.Companion.makeSwitchMenu(EnvType.Pre),
-            EnvSwitchAction.Companion.makeSwitchMenu(EnvType.Live)
+            EnvSwitchAction.makeSwitchMenu(EnvType.Local),
+            EnvSwitchAction.makeSwitchMenu(EnvType.Pre),
+            EnvSwitchAction.makeSwitchMenu(EnvType.Live)
         )
     }
 }

@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.MethodSource
 import javax.swing.Icon
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class TestEnvType {
+internal class EnvTypeTest {
 
-    fun testEnvTypeData(): Array<Array<Any>>? {
+    fun dataProvider(): Array<Array<Any>>? {
         return arrayOf(
             arrayOf(
                 EnvType.Local,
@@ -36,8 +36,8 @@ internal class TestEnvType {
     }
 
     @ParameterizedTest
-    @MethodSource("testEnvTypeData")
-    fun dataProvider(envType: EnvType, expectedName: String, expectedIcon: Icon, expectedDesc : String) {
+    @MethodSource("dataProvider")
+    fun testEnvTypeData(envType: EnvType, expectedName: String, expectedIcon: Icon, expectedDesc : String) {
         println(envType.name)
         assertEquals(expectedName, envType.name)
         assertEquals(expectedIcon, envType.getIcon())

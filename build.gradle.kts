@@ -25,9 +25,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.codehaus.groovy:groovy-all:2.3.11")
-    implementation(kotlin("stdlib-jdk8"))
-    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation("org.jetbrains.kotlin", "kotlin-test-junit5", "1.3.72")
 }
 
@@ -101,6 +99,7 @@ tasks {
     }
 
     test{
+        systemProperty("idea.force.use.core.classloader", "true")
         useJUnitPlatform()
     }
     // Configure UI tests plugin
