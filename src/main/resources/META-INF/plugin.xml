@@ -7,7 +7,6 @@
     <vendor url="https://github.com/boboram/laravel-env-switch">boboram</vendor>
 
     <!--종속관계-->
-    <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
